@@ -27,4 +27,9 @@ public class SaleService {
 		
 		return repository.findSales(min, max, pageable);
 	}
+	
+	public Page<Sale> send(Pageable pageable) {
+		
+		return repository.findAll(pageable);
+	}
 }

@@ -25,8 +25,8 @@ public class SaleController {
 		
 		@GetMapping
 		public Page<Sale> findSales(
-				@RequestParam(value = "minDate", defaultValue = " ")String minDate,
-				@RequestParam(value = "maxDate", defaultValue = " ") String maxDate, 
+				@RequestParam(value = "minDate", defaultValue = "")String minDate,
+				@RequestParam(value = "maxDate", defaultValue = "") String maxDate, 
 				Pageable pageable){
 			return service.findSales(minDate, maxDate, pageable);
 		}
@@ -34,4 +34,10 @@ public class SaleController {
 		public void notifysms(@PathVariable Long id) {
 			smsService.sendSms(id);
 		}
+		
+		@GetMapping("/buscar")
+		public Page<Sale> find(Pageable pageable){
+			return service.send(pageable);
+		}
+		
 }
